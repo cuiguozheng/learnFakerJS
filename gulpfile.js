@@ -1,7 +1,7 @@
 var gulp = require('gulp'), //gulp引入
 	include = require('gulp-include'),
 	optimize = require('gulp-requirejs-optimize'),
-	jsf = require('json-schema-faker'),
+	Mock = require('mockjs')
 	concat = require('gulp-concat'),
 	connect = require('gulp-connect'); //启动服务
 
@@ -35,12 +35,15 @@ gulp.task('js', function(){
 
 //boundle task
 gulp.task('boundle', function(){
-	gulp.src('src/js/libs/jquery.min.js')
+	gulp.src('src/js/libs/{jquery.min,require.min}.js')
 		.pipe(concat('boundle.min.js'))
 		.pipe(gulp.dest('build/static/js'));
 });
 
-var schema = {
+
+
+
+/*var schema = {
     type: 'object',
     properties: {
         user: {
@@ -74,7 +77,7 @@ var schema = {
  
 var sample = jsf(schema);
  
-console.log(sample);
+console.log(sample);*/
 
 //gulp reload
 gulp.task('reload', function(){
